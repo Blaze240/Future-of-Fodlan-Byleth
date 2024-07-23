@@ -10,8 +10,10 @@ use {
     smashline::{Priority::*, *},
 };
 
-unsafe extern "C" fn expression_attackairn(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn game_win2(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
+        let rand = smash::app::sv_math::rand(hash40("agent"), 2) as u64;
+        if rand == 1{
         ModelModule::set_mesh_visibility(
             agent.module_accessor,
             Hash40::new("dark_knight_armor"),
@@ -37,57 +39,38 @@ unsafe extern "C" fn expression_attackairn(agent: &mut L2CAgentBase) {
             Hash40::new("sayam"),
             true,
         );
-        AttackModule::set_attack_reference_joint_id(
+    }else{
+        ModelModule::set_mesh_visibility(
             agent.module_accessor,
-            Hash40::new("haver"),
-            AttackDirectionAxis(*ATTACK_DIRECTION_Z_MINUS),
-            AttackDirectionAxis(*ATTACK_DIRECTION_Y),
-            AttackDirectionAxis(*ATTACK_DIRECTION_X),
+            Hash40::new("dark_knight_armor"),
+            true,
         );
-    }
-    frame(agent.lua_state_agent, 4.0);
-    if macros::is_excute(agent) {
-        ControlModule::set_rumble(
+        ModelModule::set_mesh_visibility(
             agent.module_accessor,
-            Hash40::new("rbkind_nohits"),
-            0,
+            Hash40::new("paladin_armor"),
             false,
-            *BATTLE_OBJECT_ID_INVALID as u32,
         );
-    }
-    frame(agent.lua_state_agent, 6.0);
-    if macros::is_excute(agent) {
-        macros::RUMBLE_HIT(agent, Hash40::new("rbkind_slashs"), 0);
-    }
-    frame(agent.lua_state_agent, 13.0);
-    if macros::is_excute(agent) {
-        ControlModule::set_rumble(
+        ModelModule::set_mesh_visibility(
             agent.module_accessor,
-            Hash40::new("rbkind_nohitm"),
-            0,
+            Hash40::new("weaponbladem"),
             false,
-            *BATTLE_OBJECT_ID_INVALID as u32,
         );
-        AttackModule::set_attack_reference_joint_id(
+        ModelModule::set_mesh_visibility(
             agent.module_accessor,
-            Hash40::new("haver"),
-            AttackDirectionAxis(*ATTACK_DIRECTION_Z),
-            AttackDirectionAxis(*ATTACK_DIRECTION_Y),
-            AttackDirectionAxis(*ATTACK_DIRECTION_X),
+            Hash40::new("weapongripm"),
+            false,
+        );
+        ModelModule::set_mesh_visibility(
+            agent.module_accessor,
+            Hash40::new("sayam"),
+            false,
         );
     }
-    frame(agent.lua_state_agent, 15.0);
-    if macros::is_excute(agent) {
-        macros::RUMBLE_HIT(agent, Hash40::new("rbkind_slashm"), 0);
-    }
+}
 }
 
 pub fn install() {
     Agent::new("marth")
-        .expression_acmd(
-            "expression_attackairn_soulshift",
-            expression_attackairn,
-            Default,
-        )
+        .game_acmd("game_win2_soulshift",game_win2,Low)
         .install();
 }

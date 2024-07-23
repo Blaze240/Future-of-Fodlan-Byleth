@@ -10,8 +10,10 @@ use {
     smashline::{Priority::*, *},
 };
 
-unsafe extern "C" fn expression_attackairlw(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn game_appeallw(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
+        let rand = smash::app::sv_math::rand(hash40("agent"), 2) as u64;
+        if rand == 1{
         ModelModule::set_mesh_visibility(
             agent.module_accessor,
             Hash40::new("dark_knight_armor"),
@@ -37,24 +39,39 @@ unsafe extern "C" fn expression_attackairlw(agent: &mut L2CAgentBase) {
             Hash40::new("sayam"),
             true,
         );
-        AttackModule::set_attack_reference_joint_id(agent.module_accessor, Hash40::new("haver"), AttackDirectionAxis(*ATTACK_DIRECTION_Z), AttackDirectionAxis(*ATTACK_DIRECTION_Y), AttackDirectionAxis(*ATTACK_DIRECTION_X));
+    }else{
+        ModelModule::set_mesh_visibility(
+            agent.module_accessor,
+            Hash40::new("dark_knight_armor"),
+            true,
+        );
+        ModelModule::set_mesh_visibility(
+            agent.module_accessor,
+            Hash40::new("paladin_armor"),
+            false,
+        );
+        ModelModule::set_mesh_visibility(
+            agent.module_accessor,
+            Hash40::new("weaponbladem"),
+            false,
+        );
+        ModelModule::set_mesh_visibility(
+            agent.module_accessor,
+            Hash40::new("weapongripm"),
+            false,
+        );
+        ModelModule::set_mesh_visibility(
+            agent.module_accessor,
+            Hash40::new("sayam"),
+            false,
+        );
     }
-    frame(agent.lua_state_agent, 7.0);
-    if macros::is_excute(agent) {
-        ControlModule::set_rumble(agent.module_accessor, Hash40::new("rbkind_nohitl"), 0, false, *BATTLE_OBJECT_ID_INVALID as u32);
-    }
-    frame(agent.lua_state_agent, 9.0);
-    if macros::is_excute(agent) {
-        macros::RUMBLE_HIT(agent, Hash40::new("rbkind_slashm"), 0);
-    }
+}
 }
 
 pub fn install() {
     Agent::new("marth")
-        .expression_acmd(
-            "expression_attackairlw_soulshift",
-            expression_attackairlw,
-            Default,
-        )
+        .game_acmd("game_appeallwl_soulshift",game_appeallw,Low)
+        .game_acmd("game_appeallwr_soulshift",game_appeallw,Low)
         .install();
 }

@@ -9,16 +9,22 @@
     clippy::borrow_interior_mutable_const
 )]
 
-mod AttackAirN;
-mod AttackAirF;
-mod AttackAirB;
-mod AttackAirHi;
-mod AttackAirLw;
+mod AppealHi;
+mod AppealLw;
+mod AppealS;
+
+mod Wait1;
+
+mod Win1;
+mod Win2;
+mod Win3;
 
 pub fn install() {
-    AttackAirN::install();
-	AttackAirF::install();
-	AttackAirB::install();
-	AttackAirHi::install();
-	AttackAirLw::install();
+    AppealHi::install();
+	AppealS::install();
+	AppealLw::install();
+	Wait1::install();
+	Win1::install();
+	Win2::install();
+	Win3::install();
 }

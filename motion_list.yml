@@ -2,7 +2,7 @@
 motion_path: fighter/marth/motion/body/c00
 list:
   wait:
-    game_script: game_wait1
+    game_script: game_wait1_soulshift
     flags:
       turn: false
       loop: false
@@ -6644,7 +6644,7 @@ list:
       cancel_frame: 0
       no_stop_intp: false
   appeal_hi_r:
-    game_script: game_appealhir
+    game_script: game_appealhir_soulshift
     flags:
       turn: false
       loop: false
@@ -6674,7 +6674,7 @@ list:
       cancel_frame: 50
       no_stop_intp: false
   appeal_hi_l:
-    game_script: game_appealhil
+    game_script: game_appealhil_soulshift
     flags:
       turn: false
       loop: false
@@ -6704,7 +6704,7 @@ list:
       cancel_frame: 50
       no_stop_intp: false
   appeal_s_r:
-    game_script: game_appealsr
+    game_script: game_appealsr_soulshift
     flags:
       turn: false
       loop: false
@@ -6734,7 +6734,7 @@ list:
       cancel_frame: 50
       no_stop_intp: false
   appeal_s_l:
-    game_script: game_appealsl
+    game_script: game_appealsl_soulshift
     flags:
       turn: false
       loop: false
@@ -6764,7 +6764,7 @@ list:
       cancel_frame: 50
       no_stop_intp: false
   appeal_lw_r:
-    game_script: game_appeallwr
+    game_script: game_appeallwr_soulshift
     flags:
       turn: false
       loop: false
@@ -6794,7 +6794,7 @@ list:
       cancel_frame: 50
       no_stop_intp: false
   appeal_lw_l:
-    game_script: game_appeallwl
+    game_script: game_appeallwl_soulshift
     flags:
       turn: false
       loop: false
@@ -6824,7 +6824,7 @@ list:
       cancel_frame: 50
       no_stop_intp: false
   win_1:
-    game_script: game_win1
+    game_script: game_win1_soulshift
     flags:
       turn: false
       loop: false
@@ -6884,7 +6884,7 @@ list:
       cancel_frame: 0
       no_stop_intp: false
   win_2:
-    game_script: game_win2
+    game_script: game_win2_soulshift
     flags:
       turn: false
       loop: false
@@ -6944,7 +6944,7 @@ list:
       cancel_frame: 0
       no_stop_intp: false
   win_3:
-    game_script: game_win3
+    game_script: game_win3_soulshift
     flags:
       turn: false
       loop: false

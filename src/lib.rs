@@ -15,9 +15,11 @@
 
 mod Dark_Knight_Switch;
 mod Paladin_Switch;
+mod Proteus;
 
 #[skyline::main(name = "soulshift_marth")]
 pub fn main() {
     Dark_Knight_Switch::install();
 	Paladin_Switch::install();
+	Proteus::install();
 }
