@@ -10,10 +10,23 @@ use {
     smashline::{Priority::*, *},
 };
 
-unsafe extern "C" fn game_win2(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn effect_win2(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 2) as u64;
         if rand == 1{
+            macros::EFFECT_FOLLOW(
+                agent,
+                Hash40::new("elight_change_start"),
+                Hash40::new("top"),
+                0,
+                10,
+                0,
+                0,
+                0,
+                0,
+                1.3,
+                true,
+            );
         ModelModule::set_mesh_visibility(
             agent.module_accessor,
             Hash40::new("dark_knight_armor"),
@@ -40,6 +53,19 @@ unsafe extern "C" fn game_win2(agent: &mut L2CAgentBase) {
             true,
         );
     }else{
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("edge_aura"),
+            Hash40::new("top"),
+            -2,
+            -2,
+            0,
+            80,
+            90,
+            0,
+            1,
+            true,
+        );
         ModelModule::set_mesh_visibility(
             agent.module_accessor,
             Hash40::new("dark_knight_armor"),
@@ -71,6 +97,6 @@ unsafe extern "C" fn game_win2(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("marth")
-        .game_acmd("game_win2_soulshift",game_win2,Low)
+        .effect_acmd("effect_win2_soulshift",effect_win2,Low)
         .install();
 }

@@ -1975,7 +1975,7 @@ list:
     scripts:
       - expression_attack11_soulshift
       - sound_attack11
-      - effect_attack11
+      - effect_attack11_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2005,7 +2005,7 @@ list:
     scripts:
       - expression_attack12_soulshift
       - sound_attack12
-      - effect_attack12
+      - effect_attack12_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2065,7 +2065,7 @@ list:
     scripts:
       - expression_attacks3_soulshift
       - sound_attacks3
-      - effect_attacks3
+      - effect_attacks3_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2095,7 +2095,7 @@ list:
     scripts:
       - expression_attackhi3_soulshift
       - sound_attackhi3
-      - effect_attackhi3
+      - effect_attackhi3_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2125,7 +2125,7 @@ list:
     scripts:
       - expression_attacklw3_soulshift
       - sound_attacklw3
-      - effect_attacklw3
+      - effect_attacklw3_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2155,7 +2155,7 @@ list:
     scripts:
       - expression_attacks4_soulshift
       - sound_attacks4
-      - effect_attacks4
+      - effect_attacks4_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2215,7 +2215,7 @@ list:
     scripts:
       - expression_attackhi4_soulshift
       - sound_attackhi4
-      - effect_attackhi4
+      - effect_attackhi4_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2275,7 +2275,7 @@ list:
     scripts:
       - expression_attacklw4_soulshift
       - sound_attacklw4
-      - effect_attacklw4
+      - effect_attacklw4_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6644,7 +6644,7 @@ list:
       cancel_frame: 0
       no_stop_intp: false
   appeal_hi_r:
-    game_script: game_appealhir_soulshift
+    game_script: game_appealhir
     flags:
       turn: false
       loop: false
@@ -6667,14 +6667,14 @@ list:
     scripts:
       - expression_appealhir
       - sound_appealhir
-      - effect_appealhir
+      - effect_appealhir_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
       cancel_frame: 50
       no_stop_intp: false
   appeal_hi_l:
-    game_script: game_appealhil_soulshift
+    game_script: game_appealhil
     flags:
       turn: false
       loop: false
@@ -6697,14 +6697,14 @@ list:
     scripts:
       - expression_appealhil
       - sound_appealhil
-      - effect_appealhil
+      - effect_appealhil_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
       cancel_frame: 50
       no_stop_intp: false
   appeal_s_r:
-    game_script: game_appealsr_soulshift
+    game_script: game_appealsr
     flags:
       turn: false
       loop: false
@@ -6727,14 +6727,14 @@ list:
     scripts:
       - expression_appealsr
       - sound_appealsr
-      - effect_appealsr
+      - effect_appealsr_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
       cancel_frame: 50
       no_stop_intp: false
   appeal_s_l:
-    game_script: game_appealsl_soulshift
+    game_script: game_appealsl
     flags:
       turn: false
       loop: false
@@ -6757,14 +6757,14 @@ list:
     scripts:
       - expression_appealsl
       - sound_appealsl
-      - effect_appealsl
+      - effect_appealsl_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
       cancel_frame: 50
       no_stop_intp: false
   appeal_lw_r:
-    game_script: game_appeallwr_soulshift
+    game_script: game_appeallwr
     flags:
       turn: false
       loop: false
@@ -6787,7 +6787,7 @@ list:
     scripts:
       - expression_appeallwr
       - sound_appeallwr
-      - effect_appeallwr
+      - effect_appeallwr_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6824,7 +6824,7 @@ list:
       cancel_frame: 50
       no_stop_intp: false
   win_1:
-    game_script: game_win1_soulshift
+    game_script: game_win1
     flags:
       turn: false
       loop: false
@@ -6847,7 +6847,7 @@ list:
     scripts:
       - expression_win1
       - sound_win1
-      - effect_win1
+      - effect_win1_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6884,7 +6884,7 @@ list:
       cancel_frame: 0
       no_stop_intp: false
   win_2:
-    game_script: game_win2_soulshift
+    game_script: game_win2
     flags:
       turn: false
       loop: false
@@ -6907,7 +6907,7 @@ list:
     scripts:
       - expression_win2
       - sound_win2
-      - effect_win2
+      - effect_win2_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6944,7 +6944,7 @@ list:
       cancel_frame: 0
       no_stop_intp: false
   win_3:
-    game_script: game_win3_soulshift
+    game_script: game_win3
     flags:
       turn: false
       loop: false
@@ -6967,7 +6967,7 @@ list:
     scripts:
       - expression_win3
       - sound_win3
-      - effect_win3
+      - effect_win3_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0

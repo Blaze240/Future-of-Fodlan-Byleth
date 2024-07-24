@@ -10,68 +10,130 @@ use {
     smashline::{Priority::*, *},
 };
 
-unsafe extern "C" fn game_appeallw(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn effect_appeallw(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 2) as u64;
-        if rand == 1{
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("dark_knight_armor"),
-            false,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("paladin_armor"),
+        if rand == 1 {
+            macros::EFFECT_FOLLOW(
+                agent,
+                Hash40::new("elight_change_start"),
+                Hash40::new("top"),
+                0,
+                10,
+                0,
+                0,
+                0,
+                0,
+                1.3,
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("dark_knight_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("paladin_armor"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("weaponbladem"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("weapongripm"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("sayam"), true);
+        } else {
+            macros::EFFECT_FOLLOW(
+                agent,
+                Hash40::new("edge_aura"),
+                Hash40::new("top"),
+                -2,
+                -2,
+                0,
+                80,
+                90,
+                0,
+                1,
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("dark_knight_armor"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("paladin_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("weaponbladem"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("weapongripm"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("sayam"), false);
+        }
+    }
+    frame(agent.lua_state_agent, 24.0);
+    if macros::is_excute(agent) {
+        macros::EFFECT(
+            agent,
+            Hash40::new("sys_smash_flash_s"),
+            Hash40::new("sword1"),
+            -0.0,
+            -0.0,
+            10,
+            0,
+            0,
+            0,
+            1.5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weaponbladem"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weapongripm"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("sayam"),
-            true,
-        );
-    }else{
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("dark_knight_armor"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("paladin_armor"),
-            false,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weaponbladem"),
-            false,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weapongripm"),
-            false,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("sayam"),
-            false,
         );
     }
-}
+    frame(agent.lua_state_agent, 48.0);
+    if macros::is_excute(agent) {
+        macros::EFFECT(
+            agent,
+            Hash40::new("sys_smash_flash_s"),
+            Hash40::new("sword1"),
+            -0.0,
+            -0.0,
+            10,
+            0,
+            0,
+            0,
+            0.8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            true,
+        );
+    }
 }
 
 pub fn install() {
     Agent::new("marth")
-        .game_acmd("game_appeallwl_soulshift",game_appeallw,Low)
-        .game_acmd("game_appeallwr_soulshift",game_appeallw,Low)
+        .effect_acmd("effect_appeallwl_soulshift", effect_appeallw, Low)
+        .effect_acmd("effect_appeallwr_soulshift", effect_appeallw, Low)
         .install();
 }
