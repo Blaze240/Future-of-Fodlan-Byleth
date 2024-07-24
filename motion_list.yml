@@ -2635,7 +2635,7 @@ list:
     scripts:
       - expression_specialnstart
       - sound_specialnstart
-      - effect_specialnstart
+      - effect_specialnstart_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2875,7 +2875,7 @@ list:
     scripts:
       - expression_specialairnstart
       - sound_specialairnstart
-      - effect_specialairnstart
+      - effect_specialairnstart_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -3115,7 +3115,7 @@ list:
     scripts:
       - expression_specials1
       - sound_specials1
-      - effect_specials1
+      - effect_specials1_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -3385,7 +3385,7 @@ list:
     scripts:
       - expression_specialairs1
       - sound_specialairs1
-      - effect_specialairs1
+      - effect_specialairs1_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6605,7 +6605,7 @@ list:
       - name: j00entryr.nuanmb
         unk: 0
     scripts:
-      - expression_entryr
+      - expression_entryr_soulshift
       - sound_entryr
       - effect_entryr
     extra:
@@ -6635,7 +6635,7 @@ list:
       - name: j00entryl.nuanmb
         unk: 0
     scripts:
-      - expression_entryl
+      - expression_entryl_soulshift
       - sound_entryl
       - effect_entryl
     extra:
