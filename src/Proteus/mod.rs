@@ -14,6 +14,7 @@ mod AppealLw;
 mod AppealS;
 
 mod Wait1;
+mod AttackDash;
 
 mod Win1;
 mod Win2;
@@ -24,6 +25,7 @@ pub fn install() {
 	AppealS::install();
 	AppealLw::install();
 	Wait1::install();
+	AttackDash::install();
 	Win1::install();
 	Win2::install();
 	Win3::install();

@@ -1,4 +1,6 @@
 use {
+    crate::DARK_KNIGHT_EXIST,
+    crate::PALADIN_EXIST,
     smash::{
         app::{lua_bind::*, sv_animcmd::*, *},
         hash40,
@@ -10,6 +12,25 @@ use {
     smashline::{Priority::*, *},
 };
 unsafe extern "C" fn effect_attacklw3(agent: &mut L2CAgentBase) {
+    if macros::is_excute(agent) {
+        if DARK_KNIGHT_EXIST == false {
+            macros::EFFECT_FOLLOW(
+                agent,
+                Hash40::new("eflame_change_start"),
+                Hash40::new("top"),
+                4,
+                10,
+                0,
+                0,
+                0,
+                0,
+                1.3,
+                true,
+            );
+        }
+        DARK_KNIGHT_EXIST = true;
+        PALADIN_EXIST = false;
+    }
     frame(agent.lua_state_agent, 6.0);
     if macros::is_excute(agent) {
         macros::AFTER_IMAGE4_ON_arg29(
@@ -116,7 +137,7 @@ unsafe extern "C" fn expression_attacklw3(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("marth")
-    .effect_acmd("effect_attacklw3_soulshift", effect_attacklw3, Default)
+        .effect_acmd("effect_attacklw3_soulshift", effect_attacklw3, Default)
         .expression_acmd(
             "expression_attacklw3_soulshift",
             expression_attacklw3,

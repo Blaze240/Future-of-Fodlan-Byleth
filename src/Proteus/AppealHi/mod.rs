@@ -1,4 +1,6 @@
 use {
+    crate::DARK_KNIGHT_EXIST,
+    crate::PALADIN_EXIST,
     smash::{
         app::{lua_bind::*, sv_animcmd::*, *},
         hash40,
@@ -14,19 +16,21 @@ unsafe extern "C" fn effect_appealhi(agent: &mut L2CAgentBase) {
     let rand = smash::app::sv_math::rand(hash40("agent"), 2);
     if macros::is_excute(agent) {
         if rand == 1 {
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if PALADIN_EXIST == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("elight_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 agent.module_accessor,
                 Hash40::new("dark_knight_armor"),
@@ -48,20 +52,40 @@ unsafe extern "C" fn effect_appealhi(agent: &mut L2CAgentBase) {
                 true,
             );
             ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("sayam"), true);
+            PALADIN_EXIST = true;
+            DARK_KNIGHT_EXIST = false;
         } else {
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("edge_aura"),
-                Hash40::new("hip"),
-                -2,
-                -2,
-                0,
-                80,
-                90,
-                0,
-                1,
-                true,
-            );
+            if DARK_KNIGHT_EXIST == true {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("edge_aura"),
+                    Hash40::new("top"),
+                    4,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
+            if PALADIN_EXIST == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
+
             ModelModule::set_mesh_visibility(
                 agent.module_accessor,
                 Hash40::new("dark_knight_armor"),
@@ -83,6 +107,8 @@ unsafe extern "C" fn effect_appealhi(agent: &mut L2CAgentBase) {
                 false,
             );
             ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("sayam"), false);
+            DARK_KNIGHT_EXIST = true;
+            PALADIN_EXIST = false;
             frame(agent.lua_state_agent, 19.0);
             if macros::is_excute(agent) {
                 macros::EFFECT(

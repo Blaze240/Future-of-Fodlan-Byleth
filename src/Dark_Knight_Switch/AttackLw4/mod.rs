@@ -1,4 +1,6 @@
 use {
+    crate::DARK_KNIGHT_EXIST,
+    crate::PALADIN_EXIST,
     smash::{
         app::{lua_bind::*, sv_animcmd::*, *},
         hash40,
@@ -11,6 +13,25 @@ use {
 };
 
 unsafe extern "C" fn effect_attacklw4(agent: &mut L2CAgentBase) {
+    if macros::is_excute(agent) {
+        if DARK_KNIGHT_EXIST == false {
+            macros::EFFECT_FOLLOW(
+                agent,
+                Hash40::new("eflame_change_start"),
+                Hash40::new("top"),
+                4,
+                10,
+                0,
+                0,
+                0,
+                0,
+                1.3,
+                true,
+            );
+        }
+        DARK_KNIGHT_EXIST = true;
+        PALADIN_EXIST = false;
+    }
     frame(agent.lua_state_agent, 2.0);
     if macros::is_excute(agent) {
         macros::EFFECT(

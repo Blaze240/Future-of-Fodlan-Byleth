@@ -2,7 +2,7 @@
 motion_path: fighter/marth/motion/body/c00
 list:
   wait:
-    game_script: game_wait1_soulshift
+    game_script: game_wait1
     flags:
       turn: false
       loop: false
@@ -25,7 +25,7 @@ list:
     scripts:
       - expression_wait1
       - sound_wait1
-      - effect_wait1
+      - effect_wait1_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2035,7 +2035,7 @@ list:
     scripts:
       - expression_attackdash
       - sound_attackdash
-      - effect_attackdash
+      - effect_attackdash_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2335,7 +2335,7 @@ list:
     scripts:
       - expression_attackairn_soulshift
       - sound_attackairn
-      - effect_attackairn
+      - effect_attackairn_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2365,7 +2365,7 @@ list:
     scripts:
       - expression_attackairf_soulshift
       - sound_attackairf
-      - effect_attackairf
+      - effect_attackairf_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2395,7 +2395,7 @@ list:
     scripts:
       - expression_attackairb_soulshift
       - sound_attackairb
-      - effect_attackairb
+      - effect_attackairb_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2425,7 +2425,7 @@ list:
     scripts:
       - expression_attackairhi_soulshift
       - sound_attackairhi
-      - effect_attackairhi
+      - effect_attackairhi_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2455,7 +2455,7 @@ list:
     scripts:
       - expression_attackairlw_soulshift
       - sound_attackairlw
-      - effect_attackairlw
+      - effect_attackairlw_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6794,7 +6794,7 @@ list:
       cancel_frame: 50
       no_stop_intp: false
   appeal_lw_l:
-    game_script: game_appeallwl_soulshift
+    game_script: game_appeallwl
     flags:
       turn: false
       loop: false
@@ -6817,7 +6817,7 @@ list:
     scripts:
       - expression_appeallwl
       - sound_appeallwl
-      - effect_appeallwl
+      - effect_appeallwl_soulshift
     extra:
       xlu_start: 0
       xlu_end: 0

@@ -1,4 +1,6 @@
 use {
+    crate::DARK_KNIGHT_EXIST,
+    crate::PALADIN_EXIST,
     smash::{
         app::{lua_bind::*, sv_animcmd::*, *},
         hash40,
@@ -10,6 +12,10 @@ use {
     smashline::{Priority::*, *},
 };
 unsafe extern "C" fn effect_attack12(agent: &mut L2CAgentBase) {
+    if macros::is_excute(agent) {
+        DARK_KNIGHT_EXIST = true;
+        PALADIN_EXIST = false;
+    }
     frame(agent.lua_state_agent, 2.0);
     if macros::is_excute(agent) {
         macros::FOOT_EFFECT(

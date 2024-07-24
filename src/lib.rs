@@ -12,6 +12,8 @@
 	non_snake_case,
     clippy::borrow_interior_mutable_const
 )]
+static mut DARK_KNIGHT_EXIST: bool = false;
+static mut PALADIN_EXIST: bool = false;
 
 mod Dark_Knight_Switch;
 mod Paladin_Switch;

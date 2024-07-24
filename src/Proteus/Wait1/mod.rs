@@ -1,4 +1,6 @@
 use {
+    crate::DARK_KNIGHT_EXIST,
+    crate::PALADIN_EXIST,
     smash::{
         app::{lua_bind::*, sv_animcmd::*, *},
         hash40,
@@ -10,67 +12,93 @@ use {
     smashline::{Priority::*, *},
 };
 
-unsafe extern "C" fn game_wait1(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn effect_wait1(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 2) as u64;
-        if rand == 1{
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("dark_knight_armor"),
-            false,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("paladin_armor"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weaponbladem"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weapongripm"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("sayam"),
-            true,
-        );
-    }else{
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("dark_knight_armor"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("paladin_armor"),
-            false,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weaponbladem"),
-            false,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weapongripm"),
-            false,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("sayam"),
-            false,
-        );
+        if rand == 1 {
+            if PALADIN_EXIST == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("elight_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("dark_knight_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("paladin_armor"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("weaponbladem"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("weapongripm"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("sayam"), true);
+            PALADIN_EXIST = true;
+            DARK_KNIGHT_EXIST = false;
+        } else {
+            if DARK_KNIGHT_EXIST == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    4,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("dark_knight_armor"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("paladin_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("weaponbladem"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                agent.module_accessor,
+                Hash40::new("weapongripm"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("sayam"), false);
+            DARK_KNIGHT_EXIST = true;
+            PALADIN_EXIST = false;
+        }
     }
-}
 }
 
 pub fn install() {
     Agent::new("marth")
-        .game_acmd("game_wait1_soulshift",game_wait1,Low)
+        .effect_acmd("effect_wait1_soulshift", effect_wait1, Low)
         .install();
 }

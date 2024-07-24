@@ -55,15 +55,15 @@ unsafe extern "C" fn effect_win2(agent: &mut L2CAgentBase) {
     }else{
         macros::EFFECT_FOLLOW(
             agent,
-            Hash40::new("edge_aura"),
-            Hash40::new("hip"),
-            -2,
-            -2,
+            Hash40::new("eflame_change_start"),
+            Hash40::new("top"),
+            4,
+            10,
             0,
-            80,
-            90,
             0,
-            1,
+            0,
+            0,
+            1.3,
             true,
         );
         ModelModule::set_mesh_visibility(

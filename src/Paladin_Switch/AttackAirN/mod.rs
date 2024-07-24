@@ -1,4 +1,6 @@
 use {
+    crate::DARK_KNIGHT_EXIST,
+    crate::PALADIN_EXIST,
     smash::{
         app::{lua_bind::*, sv_animcmd::*, *},
         hash40,
@@ -10,6 +12,106 @@ use {
     smashline::{Priority::*, *},
 };
 
+unsafe extern "C" fn effect_attackairn(agent: &mut L2CAgentBase) {
+    if macros::is_excute(agent) {
+        if PALADIN_EXIST == false {
+            macros::EFFECT_FOLLOW(
+                agent,
+                Hash40::new("elight_change_start"),
+                Hash40::new("top"),
+                0,
+                10,
+                0,
+                0,
+                0,
+                0,
+                1.3,
+                true,
+            );
+        }
+        DARK_KNIGHT_EXIST = false;
+        PALADIN_EXIST = true;
+    }
+    frame(agent.lua_state_agent, 4.0);
+    if macros::is_excute(agent) {
+        macros::AFTER_IMAGE4_ON_arg29(
+            agent,
+            Hash40::new("tex_marth_sword1"),
+            Hash40::new("tex_marth_sword2"),
+            8,
+            Hash40::new("sword1"),
+            0,
+            0,
+            0.5,
+            Hash40::new("sword1"),
+            -0.0,
+            -0.0,
+            12.6,
+            true,
+            Hash40::new("marth_sword_blue"),
+            Hash40::new("haver"),
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            *EFFECT_AXIS_X,
+            0,
+            *TRAIL_BLEND_ALPHA,
+            101,
+            *TRAIL_CULL_NONE,
+            1.4,
+            0.2,
+        );
+    }
+    frame(agent.lua_state_agent, 11.0);
+    if macros::is_excute(agent) {
+        macros::AFTER_IMAGE_OFF(agent, 3);
+    }
+    frame(agent.lua_state_agent, 12.0);
+    if macros::is_excute(agent) {
+        macros::AFTER_IMAGE4_ON_arg29(
+            agent,
+            Hash40::new("tex_marth_sword1"),
+            Hash40::new("tex_marth_sword2"),
+            8,
+            Hash40::new("sword1"),
+            0,
+            0,
+            0.5,
+            Hash40::new("sword1"),
+            -0.0,
+            -0.0,
+            12.6,
+            true,
+            Hash40::new("marth_sword_blue"),
+            Hash40::new("haver"),
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            *EFFECT_AXIS_X,
+            0,
+            *TRAIL_BLEND_ALPHA,
+            101,
+            *TRAIL_CULL_NONE,
+            1.4,
+            0.2,
+        );
+    }
+    frame(agent.lua_state_agent, 23.0);
+    if macros::is_excute(agent) {
+        macros::AFTER_IMAGE_OFF(agent, 4);
+    }
+}
+
 unsafe extern "C" fn expression_attackairn(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         ModelModule::set_mesh_visibility(
@@ -17,26 +119,10 @@ unsafe extern "C" fn expression_attackairn(agent: &mut L2CAgentBase) {
             Hash40::new("dark_knight_armor"),
             false,
         );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("paladin_armor"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weaponbladem"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("weapongripm"),
-            true,
-        );
-        ModelModule::set_mesh_visibility(
-            agent.module_accessor,
-            Hash40::new("sayam"),
-            true,
-        );
+        ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("paladin_armor"), true);
+        ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("weaponbladem"), true);
+        ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("weapongripm"), true);
+        ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("sayam"), true);
         AttackModule::set_attack_reference_joint_id(
             agent.module_accessor,
             Hash40::new("haver"),
@@ -84,6 +170,7 @@ unsafe extern "C" fn expression_attackairn(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("marth")
+        .effect_acmd("effect_attackairn_soulshift", effect_attackairn, Default)
         .expression_acmd(
             "expression_attackairn_soulshift",
             expression_attackairn,
