@@ -70,7 +70,7 @@ unsafe extern "C" fn effect_appeallw(agent: &mut L2CAgentBase) {
                     true,
                 );
             }
-            if PALADIN_EXIST == false {
+            if DARK_KNIGHT_EXIST == false {
                 macros::EFFECT_FOLLOW(
                     agent,
                     Hash40::new("eflame_change_start"),

@@ -3655,7 +3655,7 @@ list:
     scripts:
       - expression_specialhi
       - sound_specialhi
-      - effect_specialhi
+      - effect_specialhi_soulshift
     extra:
       xlu_start: 4
       xlu_end: 6
@@ -3685,7 +3685,7 @@ list:
     scripts:
       - expression_specialairhi
       - sound_specialairhi
-      - effect_specialairhi
+      - effect_specialairhi_soulshift
     extra:
       xlu_start: 1
       xlu_end: 6
@@ -3715,7 +3715,7 @@ list:
     scripts:
       - expression_speciallw
       - sound_speciallw
-      - effect_speciallw
+      - effect_speciallw_soulshift
     extra:
       xlu_start: 5
       xlu_end: 7
@@ -3745,7 +3745,7 @@ list:
     scripts:
       - expression_speciallwhit
       - sound_speciallwhit
-      - effect_speciallwhit
+      - effect_speciallwhit_soulshift
     extra:
       xlu_start: 1
       xlu_end: 9
@@ -3775,7 +3775,7 @@ list:
     scripts:
       - expression_specialairlw
       - sound_specialairlw
-      - effect_specialairlw
+      - effect_specialairlw_soulshift
     extra:
       xlu_start: 5
       xlu_end: 7
@@ -3805,7 +3805,7 @@ list:
     scripts:
       - expression_specialairlwhit
       - sound_specialairlwhit
-      - effect_specialairlwhit
+      - effect_specialairlwhit_soulshift
     extra:
       xlu_start: 1
       xlu_end: 9
