@@ -52,7 +52,7 @@ unsafe extern "C" fn effect_appeals(agent: &mut L2CAgentBase) {
             macros::EFFECT_FOLLOW(
                 agent,
                 Hash40::new("edge_aura"),
-                Hash40::new("top"),
+                Hash40::new("hip"),
                 -2,
                 -2,
                 0,
