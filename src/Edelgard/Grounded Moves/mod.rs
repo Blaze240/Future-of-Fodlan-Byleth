@@ -9,7 +9,6 @@
     clippy::borrow_interior_mutable_const
 )]
 
-mod Entry;
 mod Attack11;
 mod Attack12;
 
