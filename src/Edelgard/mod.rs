@@ -9,13 +9,15 @@
     clippy::borrow_interior_mutable_const
 )]
 
-//mod Aerials;
-//mod Grounded_Moves;
+mod Aerials;
+mod Grounded_Moves;
 mod Other;
 //mod SpecialAir;
 //mod Special;
 
 pub fn install() {
+    Aerials::install();
+    Grounded_Moves::install();
     Other::install();
     
 }

@@ -13,8 +13,7 @@ use {
     smash_script::*,
     smashline::{Priority::*, *},
 };
-
-unsafe extern "C" fn effect_appealhi(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn effect_attack11(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 4) as u64;
         if rand == 1 {
@@ -239,61 +238,16 @@ unsafe extern "C" fn effect_appealhi(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = true;
         }
     }
-    frame(agent.lua_state_agent, 10.0);
+    frame(agent.lua_state_agent, 4.0);
     if macros::is_excute(agent) {
-        if WorkModule::get_int(agent.module_accessor, *FIGHTER_INSTANCE_WORK_ID_INT_COLOR) % 2 == 1
-        {
-            macros::EFFECT(
-                agent,
-                Hash40::new("sys_smash_flash"),
-                Hash40::new("sword1"),
-                14.5,
-                -0.0,
-                0,
-                0,
-                0,
-                0,
-                0.3,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                true,
-            );
-        }
+        macros::EFFECT_FOLLOW_ALPHA(agent, Hash40::new("sys_attack_speedline"), Hash40::new("top"), 0.4, 12, 6, 11, 2, 0, 0.4, true, 0.7);
+        macros::EFFECT_FOLLOW_ALPHA(agent, Hash40::new("sys_attack_impact"), Hash40::new("top"), 0.8, 10.5, 12.5, 0, 0, 0, 0.7, true, 1);
     }
-    frame(agent.lua_state_agent, 19.0);
-    if macros::is_excute(agent) {
-        if WorkModule::get_int(agent.module_accessor, *FIGHTER_INSTANCE_WORK_ID_INT_COLOR) % 2 == 0
-        {
-            macros::EFFECT(
-                agent,
-                Hash40::new("sys_smash_flash"),
-                Hash40::new("sword1"),
-                14.5,
-                -0.0,
-                0,
-                0,
-                0,
-                0,
-                0.3,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                true,
-            );
-        }
-    }
+
 }
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_appealhil_switchsb", effect_appealhi, Low)
-        .effect_acmd("effect_appealhir_switchsb", effect_appealhi, Low)
+        .effect_acmd("effect_attack11_switchsb", effect_attack11, Default)
         .install();
 }

@@ -242,6 +242,6 @@ unsafe extern "C" fn effect_wait1(agent: &mut L2CAgentBase) {
 }
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_wait1_switch", effect_wait1, Low)
+        .effect_acmd("effect_wait1_switchsb", effect_wait1, Low)
         .install();
 }

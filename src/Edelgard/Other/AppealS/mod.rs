@@ -265,7 +265,7 @@ unsafe extern "C" fn effect_appeals(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_appealsl_switch", effect_appeals, Low)
-        .effect_acmd("effect_appealsr_switch", effect_appeals, Low)
+        .effect_acmd("effect_appealsl_switchsb", effect_appeals, Low)
+        .effect_acmd("effect_appealsr_switchsb", effect_appeals, Low)
         .install();
 }

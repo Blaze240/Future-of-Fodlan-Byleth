@@ -8,6 +8,7 @@
     non_snake_case,
     clippy::borrow_interior_mutable_const
 )]
+mod Entry;
 
 mod AppealHi;
 mod AppealLw;
@@ -20,6 +21,8 @@ mod Win2;
 mod Win3;
 
 pub fn install() {
+    Entry::install();
+
     AppealHi::install();
     AppealS::install();
     AppealLw::install();

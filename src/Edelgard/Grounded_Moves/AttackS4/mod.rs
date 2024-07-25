@@ -14,7 +14,52 @@ use {
     smashline::{Priority::*, *},
 };
 
-unsafe extern "C" fn effect_appealhi(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn effect_attacks4(agent: &mut L2CAgentBase) {
+    if get_value_float(agent.lua_state_agent, *SO_VAR_FLOAT_LR) < 0.0 {
+        if macros::is_excute(agent) {
+            macros::EFFECT(
+                agent,
+                Hash40::new("sys_smash_flash"),
+                Hash40::new("top"),
+                -20,
+                18,
+                13.5,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                true,
+            );
+        } else {
+            if macros::is_excute(agent) {
+                macros::EFFECT(
+                    agent,
+                    Hash40::new("sys_smash_flash"),
+                    Hash40::new("top"),
+                    -8,
+                    17,
+                    13.25,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    true,
+                );
+            }
+        }
+    }
     if macros::is_excute(agent) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 4) as u64;
         if rand == 1 {
@@ -239,61 +284,116 @@ unsafe extern "C" fn effect_appealhi(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = true;
         }
     }
-    frame(agent.lua_state_agent, 10.0);
+    frame(agent.lua_state_agent, 24.0);
     if macros::is_excute(agent) {
-        if WorkModule::get_int(agent.module_accessor, *FIGHTER_INSTANCE_WORK_ID_INT_COLOR) % 2 == 1
-        {
-            macros::EFFECT(
-                agent,
-                Hash40::new("sys_smash_flash"),
-                Hash40::new("sword1"),
-                14.5,
-                -0.0,
-                0,
-                0,
-                0,
-                0,
-                0.3,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                true,
-            );
-        }
+        macros::LANDING_EFFECT(
+            agent,
+            Hash40::new("sys_atk_smoke"),
+            Hash40::new("top"),
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+        );
+        macros::EFFECT_FOLLOW_ALPHA(
+            agent,
+            Hash40::new("master_spearflare"),
+            Hash40::new("haver"),
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            true,
+            2,
+        );
+        macros::LAST_EFFECT_SET_RATE(agent, 0.9);
+        macros::EFFECT_FOLLOW_NO_STOP(
+            agent,
+            Hash40::new("master_smash_s_wind"),
+            Hash40::new("top"),
+            0,
+            10,
+            35,
+            0,
+            0,
+            0,
+            1,
+            true,
+        );
+        EffectModule::enable_sync_init_pos_last(agent.module_accessor);
     }
-    frame(agent.lua_state_agent, 19.0);
+    frame(agent.lua_state_agent, 25.0);
     if macros::is_excute(agent) {
-        if WorkModule::get_int(agent.module_accessor, *FIGHTER_INSTANCE_WORK_ID_INT_COLOR) % 2 == 0
-        {
-            macros::EFFECT(
-                agent,
-                Hash40::new("sys_smash_flash"),
-                Hash40::new("sword1"),
-                14.5,
-                -0.0,
-                0,
-                0,
-                0,
-                0,
-                0.3,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                true,
-            );
-        }
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_smash_s_speedline"),
+            Hash40::new("haver"),
+            0,
+            26,
+            0,
+            -90,
+            0,
+            0,
+            0.7,
+            true,
+        );
+        EffectModule::enable_sync_init_pos_last(agent.module_accessor);
+        macros::EFFECT_FOLLOW_NO_STOP(
+            agent,
+            Hash40::new("master_smash_s_line"),
+            Hash40::new("haver"),
+            0,
+            26,
+            0,
+            -90,
+            0,
+            0,
+            0.7,
+            true,
+        );
+        EffectModule::enable_sync_init_pos_last(agent.module_accessor);
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_smash_s_flash"),
+            Hash40::new("haver"),
+            0,
+            28,
+            -1.25,
+            0,
+            0,
+            0,
+            1.3,
+            true,
+        );
+        EffectModule::enable_sync_init_pos_last(agent.module_accessor);
+    }
+    frame(agent.lua_state_agent, 28.0);
+    if macros::is_excute(agent) {
+        macros::EFFECT_DETACH_KIND(agent, Hash40::new("master_smash_s_line"), -1);
+        macros::EFFECT_DETACH_KIND(agent, Hash40::new("master_smash_s_speedline"), -1);
+    }
+    frame(agent.lua_state_agent, 29.0);
+    if macros::is_excute(agent) {
+        macros::EFFECT_OFF_KIND(agent, Hash40::new("master_smash_s_line"), false, true);
+        macros::EFFECT_OFF_KIND(agent, Hash40::new("master_smash_s_wind"), false, true);
     }
 }
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_appealhil_switchsb", effect_appealhi, Low)
-        .effect_acmd("effect_appealhir_switchsb", effect_appealhi, Low)
+        .effect_acmd("effect_attacks4_switchsb", effect_attacks4, Default)
         .install();
 }

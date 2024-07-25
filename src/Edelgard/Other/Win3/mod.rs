@@ -191,7 +191,7 @@ unsafe extern "C" fn game_win3(agent: &mut L2CAgentBase) {
 }
 
 pub fn install() {
-    Agent::new("marth")
-        .game_acmd("game_win3_soulshift", game_win3, Low)
+    Agent::new("master")
+        .game_acmd("game_win3_switchsb", game_win3, Low)
         .install();
 }

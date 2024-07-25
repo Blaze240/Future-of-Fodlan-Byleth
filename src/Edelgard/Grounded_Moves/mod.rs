@@ -9,8 +9,9 @@
     clippy::borrow_interior_mutable_const
 )]
 
+mod AttackDash;
+
 mod Attack11;
-mod Attack12;
 
 mod AttackS3;
 mod AttackHi3;
@@ -21,9 +22,8 @@ mod AttackHi4;
 mod AttackLw4;
 
 pub fn install() {
-	Entry::install();
 	Attack11::install();
-	Attack12::install();
+	AttackDash::install();
 
 	AttackS3::install();
 	AttackHi3::install();
