@@ -1,6 +1,8 @@
 use {
-    crate::DARK_KNIGHT_EXIST,
-    crate::PALADIN_EXIST,
+    crate::DEFAULT_SWITCH,
+    crate::HOPES_SWITCH,
+    crate::PROMOTION_SWITCH,
+    crate::TIMESKIP_SWITCH,
     smash::{
         app::{lua_bind::*, sv_animcmd::*, *},
         hash40,
@@ -13,49 +15,11 @@ use {
 };
 
 unsafe extern "C" fn effect_speciallw(agent: &mut L2CAgentBase) {
-    let rand = smash::app::sv_math::rand(hash40("agent"), 2);
     if macros::is_excute(agent) {
+        let rand = smash::app::sv_math::rand(hash40("agent"), 4) as u64;
         if rand == 1 {
-            if PALADIN_EXIST == false {
-                macros::EFFECT_FOLLOW(
-                    agent,
-                    Hash40::new("elight_change_start"),
-                    Hash40::new("top"),
-                    0,
-                    10,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1.3,
-                    true,
-                );
-            }
-            ModelModule::set_mesh_visibility(
-                agent.module_accessor,
-                Hash40::new("dark_knight_armor"),
-                false,
-            );
-            ModelModule::set_mesh_visibility(
-                agent.module_accessor,
-                Hash40::new("paladin_armor"),
-                true,
-            );
-            ModelModule::set_mesh_visibility(
-                agent.module_accessor,
-                Hash40::new("weaponbladem"),
-                true,
-            );
-            ModelModule::set_mesh_visibility(
-                agent.module_accessor,
-                Hash40::new("weapongripm"),
-                true,
-            );
-            ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("sayam"), true);
-            PALADIN_EXIST = true;
-            DARK_KNIGHT_EXIST = false;
-        } else {
-            if DARK_KNIGHT_EXIST == false {
+            // changes to Timeskip version
+            if TIMESKIP_SWITCH == false {
                 macros::EFFECT_FOLLOW(
                     agent,
                     Hash40::new("eflame_change_start"),
@@ -70,95 +34,364 @@ unsafe extern "C" fn effect_speciallw(agent: &mut L2CAgentBase) {
                     true,
                 );
             }
-
             ModelModule::set_mesh_visibility(
+                // sets Three Houses crown active
                 agent.module_accessor,
-                Hash40::new("dark_knight_armor"),
+                Hash40::new("crown_houses"),
                 true,
             );
             ModelModule::set_mesh_visibility(
+                // sets Timeskip armor active
                 agent.module_accessor,
-                Hash40::new("paladin_armor"),
-                false,
-            );
-            ModelModule::set_mesh_visibility(
-                agent.module_accessor,
-                Hash40::new("weaponbladem"),
-                false,
-            );
-            ModelModule::set_mesh_visibility(
-                agent.module_accessor,
-                Hash40::new("weapongripm"),
-                false,
-            );
-            ModelModule::set_mesh_visibility(agent.module_accessor, Hash40::new("sayam"), false);
-            DARK_KNIGHT_EXIST = true;
-            PALADIN_EXIST = false;
-        }
-    }
-    frame(agent.lua_state_agent, 5.0);
-    if macros::is_excute(agent) {
-        if rand == 1 {
-            macros::EFFECT(
-                agent,
-                Hash40::new("marth_counter_flash"),
-                Hash40::new("top"),
-                0,
-                11,
-                3,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                Hash40::new("timeskip_armor"),
                 true,
             );
+            ModelModule::set_mesh_visibility(
+                // hides default Byleth outfit
+                agent.module_accessor,
+                Hash40::new("byleth_outfit"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Emperor armor
+                agent.module_accessor,
+                Hash40::new("emperor_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Three Hopes armor
+                agent.module_accessor,
+                Hash40::new("hopes_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Three Hopes crown
+                agent.module_accessor,
+                Hash40::new("crown_hopes"),
+                false,
+            );
+            TIMESKIP_SWITCH = true;
+            PROMOTION_SWITCH = false;
+            HOPES_SWITCH = false;
+            DEFAULT_SWITCH = false;
+        } else if rand == 2 {
+            // changes to Emperor version
+            if PROMOTION_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
+            ModelModule::set_mesh_visibility(
+                // sets Three Houses crown active
+                agent.module_accessor,
+                Hash40::new("crown_houses"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                // sets Emperor armor active
+                agent.module_accessor,
+                Hash40::new("emperor_armor"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides default Byleth outfit
+                agent.module_accessor,
+                Hash40::new("byleth_outfit"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Timeskip armor
+                agent.module_accessor,
+                Hash40::new("timeskip_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Three Hopes armor
+                agent.module_accessor,
+                Hash40::new("hopes_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Three Hopes crown
+                agent.module_accessor,
+                Hash40::new("crown_hopes"),
+                false,
+            );
+            TIMESKIP_SWITCH = false;
+            PROMOTION_SWITCH = true;
+            HOPES_SWITCH = false;
+            DEFAULT_SWITCH = false;
+        } else if rand == 3 {
+            // changes to Three Hopes version
+            if HOPES_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
+            ModelModule::set_mesh_visibility(
+                // sets Three Hopes crown active
+                agent.module_accessor,
+                Hash40::new("crown_hopes"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                // sets Three Hopes armor active
+                agent.module_accessor,
+                Hash40::new("hopes_armor"),
+                true,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides default Byleth outfit
+                agent.module_accessor,
+                Hash40::new("byleth_outfit"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Timeskip armor
+                agent.module_accessor,
+                Hash40::new("timeskip_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Emperor armor
+                agent.module_accessor,
+                Hash40::new("emperor_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Three Houses crown
+                agent.module_accessor,
+                Hash40::new("crown_houses"),
+                false,
+            );
+            TIMESKIP_SWITCH = false;
+            PROMOTION_SWITCH = false;
+            HOPES_SWITCH = true;
+            DEFAULT_SWITCH = false;
         } else {
-            macros::EFFECT(
-                agent,
-                Hash40::new("marth_counter_flash_dark"),
-                Hash40::new("top"),
-                0,
-                11,
-                3,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+            // changes to default Byleth
+            if DEFAULT_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
+            ModelModule::set_mesh_visibility(
+                // hides Three Houses crown
+                agent.module_accessor,
+                Hash40::new("crown_houses"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Emperor armor
+                agent.module_accessor,
+                Hash40::new("emperor_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // sets default Byleth outfit active
+                agent.module_accessor,
+                Hash40::new("byleth_outfit"),
                 true,
             );
+            ModelModule::set_mesh_visibility(
+                // hides Timeskip armor
+                agent.module_accessor,
+                Hash40::new("timeskip_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Three Hopes armor
+                agent.module_accessor,
+                Hash40::new("hopes_armor"),
+                false,
+            );
+            ModelModule::set_mesh_visibility(
+                // hides Three Hopes crown
+                agent.module_accessor,
+                Hash40::new("crown_hopes"),
+                false,
+            );
+            TIMESKIP_SWITCH = false;
+            PROMOTION_SWITCH = false;
+            HOPES_SWITCH = false;
+            DEFAULT_SWITCH = true;
         }
-        macros::FLASH(agent, 1, 1, 1, 0.75);
     }
-    wait(agent.lua_state_agent, 1.0);
-    for _ in 0..4 {
-        if macros::is_excute(agent) {
-            macros::FLASH(agent, 0.7, 0.7, 0.7, 0.5);
-        }
-        wait(agent.lua_state_agent, 2.0);
-        if macros::is_excute(agent) {
-            macros::FLASH(agent, 0.67, 0, 0.78, 0.31);
-        }
-        wait(agent.lua_state_agent, 2.0);
-        if macros::is_excute(agent) {
-            macros::COL_NORMAL(agent);
-        }
-        wait(agent.lua_state_agent, 2.0);
+    frame(agent.lua_state_agent, 1.0);
+    if macros::is_excute(agent) {
+        macros::LANDING_EFFECT(
+            agent,
+            Hash40::new("sys_action_smoke_v"),
+            Hash40::new("top"),
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+        );
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_axe_hold"),
+            Hash40::new("haver"),
+            0,
+            13,
+            0.6,
+            0,
+            0,
+            0,
+            1,
+            true,
+        );
+    }
+    frame(agent.lua_state_agent, 40.0);
+    if macros::is_excute(agent) {
+        macros::EFFECT_OFF_KIND(agent, Hash40::new("master_axe_hold"), false, true);
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_axe_hold2"),
+            Hash40::new("haver"),
+            0,
+            13,
+            0.6,
+            0,
+            0,
+            0,
+            1,
+            true,
+        );
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_axe_hold_end"),
+            Hash40::new("haver"),
+            0,
+            13,
+            0.6,
+            0,
+            0,
+            0,
+            1,
+            true,
+        );
+    }
+    frame(agent.lua_state_agent, 58.0);
+    if macros::is_excute(agent) {
+        macros::FOOT_EFFECT(
+            agent,
+            Hash40::new("sys_atk_smoke"),
+            Hash40::new("top"),
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+        );
+    }
+    frame(agent.lua_state_agent, 60.0);
+    if macros::is_excute(agent) {
+        macros::EFFECT_OFF_KIND(agent, Hash40::new("master_axe_hold2"), false, true);
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_axe_slash_reverb"),
+            Hash40::new("top"),
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            1,
+            true,
+        );
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_axe_slash"),
+            Hash40::new("top"),
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            1,
+            false,
+        );
+        EffectModule::set_disable_render_offset_last(agent.module_accessor);
+    }
+    frame(agent.lua_state_agent, 64.0);
+    if macros::is_excute(agent) {
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_axe_slash_particle"),
+            Hash40::new("top"),
+            0,
+            7,
+            1,
+            0,
+            0,
+            0,
+            1,
+            true,
+        );
+    }
+    frame(agent.lua_state_agent, 68.0);
+    if macros::is_excute(agent) {
+        macros::EFFECT_DETACH_KIND(agent, Hash40::new("master_axe_slash_reverb"), -1);
+    }
+    frame(agent.lua_state_agent, 70.0);
+    if macros::is_excute(agent) {
+        macros::EFFECT_OFF_KIND(agent, Hash40::new("master_axe_slash"), false, true);
     }
 }
 pub fn install() {
-    Agent::new("marth")
-        .effect_acmd("effect_speciallw_soulshift", effect_speciallw, Low)
+    Agent::new("master")
+        .effect_acmd("effect_speciallw_switchbe", effect_speciallw, Low)
         .install();
 }

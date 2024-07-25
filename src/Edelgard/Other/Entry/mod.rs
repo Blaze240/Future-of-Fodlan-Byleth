@@ -72,7 +72,7 @@ unsafe extern "C" fn expression_entry(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("master")
-        .expression_acmd("expression_entryl_switchsb", expression_entry, Default)
-        .expression_acmd("expression_entryr_switchsb", expression_entry, Default)
+        .expression_acmd("expression_entryl_switchbe", expression_entry, Default)
+        .expression_acmd("expression_entryr_switchbe", expression_entry, Default)
         .install();
 }

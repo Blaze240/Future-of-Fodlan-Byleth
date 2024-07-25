@@ -25,7 +25,7 @@ list:
     scripts:
       - expression_wait1
       - sound_wait1
-      - effect_wait1_switchsb
+      - effect_wait1_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -1945,7 +1945,7 @@ list:
     scripts:
       - expression_attack11
       - sound_attack11
-      - effect_attack11_switchsb
+      - effect_attack11_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2125,7 +2125,7 @@ list:
     scripts:
       - expression_attackdash
       - sound_attackdash
-      - effect_attackdash_switchsb
+      - effect_attackdash_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2155,7 +2155,7 @@ list:
     scripts:
       - expression_attacks3
       - sound_attacks3
-      - effect_attacks3_switchsb
+      - effect_attacks3_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2185,7 +2185,7 @@ list:
     scripts:
       - expression_attackhi3
       - sound_attackhi3
-      - effect_attackhi3_switchsb
+      - effect_attackhi3_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2215,7 +2215,7 @@ list:
     scripts:
       - expression_attacklw3
       - sound_attacklw3
-      - effect_attacklw3_switchsb
+      - effect_attacklw3_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2275,7 +2275,7 @@ list:
     scripts:
       - expression_attacks4
       - sound_attacks4
-      - effect_attacks4_switchsb
+      - effect_attacks4_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2365,7 +2365,7 @@ list:
     scripts:
       - expression_attackhi4
       - sound_attackhi4
-      - effect_attackhi4_switchsb
+      - effect_attackhi4_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2425,7 +2425,7 @@ list:
     scripts:
       - expression_attacklw4
       - sound_attacklw4
-      - effect_attacklw4_switchsb
+      - effect_attacklw4_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2485,7 +2485,7 @@ list:
     scripts:
       - expression_attackairn
       - sound_attackairn
-      - effect_attackairn_switchsb
+      - effect_attackairn_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2515,7 +2515,7 @@ list:
     scripts:
       - expression_attackairf
       - sound_attackairf
-      - effect_attackairf_switchsb
+      - effect_attackairf_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2545,7 +2545,7 @@ list:
     scripts:
       - expression_attackairb
       - sound_attackairb
-      - effect_attackairb_switchsb
+      - effect_attackairb_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2575,7 +2575,7 @@ list:
     scripts:
       - expression_attackairhi
       - sound_attackairhi
-      - effect_attackairhi_switchsb
+      - effect_attackairhi_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2605,7 +2605,7 @@ list:
     scripts:
       - expression_attackairlw
       - sound_attackairlw
-      - effect_attackairlw_switchsb
+      - effect_attackairlw_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2785,7 +2785,7 @@ list:
     scripts:
       - expression_specialnstart
       - sound_specialnstart
-      - effect_specialnstart
+      - effect_specialnstart_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -2935,7 +2935,7 @@ list:
     scripts:
       - expression_specialairnstart
       - sound_specialairnstart
-      - effect_specialairnstart
+      - effect_specialairnstart_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -3115,7 +3115,7 @@ list:
     scripts:
       - expression_specialsstart
       - sound_specialsstart
-      - effect_specialsstart
+      - effect_specialsstart_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -3205,7 +3205,7 @@ list:
     scripts:
       - expression_specialairsstart
       - sound_specialairsstart
-      - effect_specialairsstart
+      - effect_specialairsstart_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -3325,7 +3325,7 @@ list:
     scripts:
       - expression_specialhi
       - sound_specialhi
-      - effect_specialhi
+      - effect_specialhi_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -3535,7 +3535,7 @@ list:
     scripts:
       - expression_specialairhi
       - sound_specialairhi
-      - effect_specialairhi
+      - effect_specialairhi_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -3655,7 +3655,7 @@ list:
     scripts:
       - expression_speciallw
       - sound_speciallw
-      - effect_speciallw
+      - effect_speciallw_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -3835,7 +3835,7 @@ list:
     scripts:
       - expression_specialairlw
       - sound_specialairlw
-      - effect_specialairlw
+      - effect_specialairlw_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6725,7 +6725,7 @@ list:
       - name: j00entryr.nuanmb
         unk: 0
     scripts:
-      - expression_entryr_switchsb
+      - expression_entryr_switchbe
       - sound_entryr
       - effect_entryr
     extra:
@@ -6755,7 +6755,7 @@ list:
       - name: j00entryl.nuanmb
         unk: 0
     scripts:
-      - expression_entryl_switchsb
+      - expression_entryl_switchbe
       - sound_entryl
       - effect_entryl
     extra:
@@ -6787,7 +6787,7 @@ list:
     scripts:
       - expression_appealhir
       - sound_appealhir
-      - effect_appealhir_switchsb
+      - effect_appealhir_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6817,7 +6817,7 @@ list:
     scripts:
       - expression_appealhil
       - sound_appealhil
-      - effect_appealhil_switchsb
+      - effect_appealhil_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6847,7 +6847,7 @@ list:
     scripts:
       - expression_appealsr
       - sound_appealsr
-      - effect_appealsr_switchsb
+      - effect_appealsr_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6877,7 +6877,7 @@ list:
     scripts:
       - expression_appealsl
       - sound_appealsl
-      - effect_appealsl_switchsb
+      - effect_appealsl_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6907,7 +6907,7 @@ list:
     scripts:
       - expression_appeallwr
       - sound_appeallwr
-      - effect_appeallwr_switchsb
+      - effect_appeallwr_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6937,7 +6937,7 @@ list:
     scripts:
       - expression_appeallwl
       - sound_appeallwl
-      - effect_appeallwl_switchsb
+      - effect_appeallwl_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -6967,7 +6967,7 @@ list:
     scripts:
       - expression_win1
       - sound_win1
-      - effect_win1_switchsb
+      - effect_win1_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -7027,7 +7027,7 @@ list:
     scripts:
       - expression_win2
       - sound_win2
-      - effect_win2_switchsb
+      - effect_win2_switchbe
     extra:
       xlu_start: 0
       xlu_end: 0
@@ -7064,7 +7064,7 @@ list:
       cancel_frame: 0
       no_stop_intp: false
   win_3:
-    game_script: game_win3_switchsb
+    game_script: game_win3_switchbe
     flags:
       turn: false
       loop: false

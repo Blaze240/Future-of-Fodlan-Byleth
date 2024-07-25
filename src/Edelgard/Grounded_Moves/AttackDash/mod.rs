@@ -19,19 +19,21 @@ unsafe extern "C" fn effect_attackdash(agent: &mut L2CAgentBase) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 4) as u64;
         if rand == 1 {
             // changes to Timeskip version
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if TIMESKIP_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // sets Three Houses crown active
                 agent.module_accessor,
@@ -74,19 +76,21 @@ unsafe extern "C" fn effect_attackdash(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = false;
         } else if rand == 2 {
             // changes to Emperor version
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if PROMOTION_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // sets Three Houses crown active
                 agent.module_accessor,
@@ -129,19 +133,21 @@ unsafe extern "C" fn effect_attackdash(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = false;
         } else if rand == 3 {
             // changes to Three Hopes version
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if HOPES_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // sets Three Hopes crown active
                 agent.module_accessor,
@@ -184,19 +190,21 @@ unsafe extern "C" fn effect_attackdash(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = false;
         } else {
             // changes to default Byleth
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if DEFAULT_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // hides Three Houses crown
                 agent.module_accessor,
@@ -241,18 +249,115 @@ unsafe extern "C" fn effect_attackdash(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 8.0);
     if macros::is_excute(agent) {
-        macros::EFFECT_FOLLOW(agent, Hash40::new("master_swordflare"), Hash40::new("sword1"), 0, 0, 0, 0, 0, -90, 1, true);
-        macros::AFTER_IMAGE4_ON_arg29(agent, Hash40::new("tex_master_sword1"), Hash40::new("tex_master_sword2"), 4, Hash40::new("sword1"), 2.3, 0, 0, Hash40::new("sword1"), 17, 0, 0.15, true, Hash40::new("null"), Hash40::new("sword1"), 0, 0, 0, 0, 0, -90, 1, 0, *EFFECT_AXIS_X, 0, *TRAIL_BLEND_ALPHA, 101, *TRAIL_CULL_NONE, 1.4, 0.1);
-        macros::LANDING_EFFECT(agent, Hash40::new("sys_atk_smoke"), Hash40::new("top"), 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, true);
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_swordflare"),
+            Hash40::new("sword1"),
+            0,
+            0,
+            0,
+            0,
+            0,
+            -90,
+            1,
+            true,
+        );
+        macros::AFTER_IMAGE4_ON_arg29(
+            agent,
+            Hash40::new("tex_master_sword1"),
+            Hash40::new("tex_master_sword2"),
+            4,
+            Hash40::new("sword1"),
+            2.3,
+            0,
+            0,
+            Hash40::new("sword1"),
+            17,
+            0,
+            0.15,
+            true,
+            Hash40::new("null"),
+            Hash40::new("sword1"),
+            0,
+            0,
+            0,
+            0,
+            0,
+            -90,
+            1,
+            0,
+            *EFFECT_AXIS_X,
+            0,
+            *TRAIL_BLEND_ALPHA,
+            101,
+            *TRAIL_CULL_NONE,
+            1.4,
+            0.1,
+        );
+        macros::LANDING_EFFECT(
+            agent,
+            Hash40::new("sys_atk_smoke"),
+            Hash40::new("top"),
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            true,
+        );
     }
     frame(agent.lua_state_agent, 14.0);
     if macros::is_excute(agent) {
         macros::AFTER_IMAGE_OFF(agent, 6);
-        macros::FOOT_EFFECT(agent, Hash40::new("sys_turn_smoke"), Hash40::new("top"), -5, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, false);
+        macros::FOOT_EFFECT(
+            agent,
+            Hash40::new("sys_turn_smoke"),
+            Hash40::new("top"),
+            -5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+        );
     }
     frame(agent.lua_state_agent, 17.0);
     if macros::is_excute(agent) {
-        macros::FOOT_EFFECT(agent, Hash40::new("sys_turn_smoke"), Hash40::new("top"), -5, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, false);
+        macros::FOOT_EFFECT(
+            agent,
+            Hash40::new("sys_turn_smoke"),
+            Hash40::new("top"),
+            -5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+        );
     }
     frame(agent.lua_state_agent, 18.0);
     if macros::is_excute(agent) {
@@ -261,6 +366,6 @@ unsafe extern "C" fn effect_attackdash(agent: &mut L2CAgentBase) {
 }
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_attackdash_switchsb", effect_attackdash, Low)
+        .effect_acmd("effect_attackdash_switchbe", effect_attackdash, Low)
         .install();
 }

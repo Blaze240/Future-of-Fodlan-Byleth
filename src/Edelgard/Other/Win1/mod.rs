@@ -191,6 +191,6 @@ unsafe extern "C" fn effect_win1(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_win1_switchsb", effect_win1, Low)
+        .effect_acmd("effect_win1_switchbe", effect_win1, Low)
         .install();
 }

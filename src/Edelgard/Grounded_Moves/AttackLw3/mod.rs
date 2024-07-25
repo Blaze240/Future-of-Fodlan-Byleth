@@ -18,19 +18,21 @@ unsafe extern "C" fn effect_attacklw3(agent: &mut L2CAgentBase) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 4) as u64;
         if rand == 1 {
             // changes to Timeskip version
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if TIMESKIP_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // sets Three Houses crown active
                 agent.module_accessor,
@@ -73,19 +75,21 @@ unsafe extern "C" fn effect_attacklw3(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = false;
         } else if rand == 2 {
             // changes to Emperor version
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if PROMOTION_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // sets Three Houses crown active
                 agent.module_accessor,
@@ -128,19 +132,21 @@ unsafe extern "C" fn effect_attacklw3(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = false;
         } else if rand == 3 {
             // changes to Three Hopes version
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if HOPES_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // sets Three Hopes crown active
                 agent.module_accessor,
@@ -183,19 +189,21 @@ unsafe extern "C" fn effect_attacklw3(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = false;
         } else {
             // changes to default Byleth
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if DEFAULT_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // hides Three Houses crown
                 agent.module_accessor,
@@ -240,19 +248,67 @@ unsafe extern "C" fn effect_attacklw3(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 11.0);
     if macros::is_excute(agent) {
-        macros::EFFECT_FOLLOW(agent, Hash40::new("master_atk_lw_slash"), Hash40::new("top"), 0, 6, 0, 15, 0, 0, 0.95, true);
+        macros::EFFECT_FOLLOW(
+            agent,
+            Hash40::new("master_atk_lw_slash"),
+            Hash40::new("top"),
+            0,
+            6,
+            0,
+            15,
+            0,
+            0,
+            0.95,
+            true,
+        );
         macros::LAST_EFFECT_SET_RATE(agent, 0.8);
     }
     frame(agent.lua_state_agent, 13.0);
     if macros::is_excute(agent) {
-        macros::EFFECT(agent, Hash40::new("master_atk_lw_impact"), Hash40::new("top"), 24, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, false);
-        macros::LANDING_EFFECT(agent, Hash40::new("master_smash_hi_smoke"), Hash40::new("top"), 24, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0.5, 0, 0, 0, false);
+        macros::EFFECT(
+            agent,
+            Hash40::new("master_atk_lw_impact"),
+            Hash40::new("top"),
+            24,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+        );
+        macros::LANDING_EFFECT(
+            agent,
+            Hash40::new("master_smash_hi_smoke"),
+            Hash40::new("top"),
+            24,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.5,
+            0.5,
+            0,
+            0.5,
+            0,
+            0,
+            0,
+            false,
+        );
     }
 }
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_attacklw3_switchsb", effect_attacklw3, Default)
+        .effect_acmd("effect_attacklw3_switchbe", effect_attacklw3, Default)
         // Game acmd script
         .install();
 }

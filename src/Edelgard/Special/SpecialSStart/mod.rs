@@ -14,7 +14,7 @@ use {
     smashline::{Priority::*, *},
 };
 
-unsafe extern "C" fn effect_attacks3(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn effect_specialsstart(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 4) as u64;
         if rand == 1 {
@@ -246,89 +246,42 @@ unsafe extern "C" fn effect_attacks3(agent: &mut L2CAgentBase) {
             HOPES_SWITCH = false;
             DEFAULT_SWITCH = true;
         }
-    }
-    frame(agent.lua_state_agent, 8.0);
-    if macros::is_excute(agent) {
-        macros::AFTER_IMAGE4_ON_arg29(
-            agent,
-            Hash40::new("tex_master_sword1"),
-            Hash40::new("tex_master_sword2"),
-            5,
-            Hash40::new("sword1"),
-            2.3,
-            0,
-            0,
-            Hash40::new("sword1"),
-            17,
-            0,
-            0.15,
-            true,
-            Hash40::new("null"),
-            Hash40::new("sword1"),
-            0,
-            0,
-            0,
-            0,
-            0,
-            -90,
-            1,
-            0,
-            *EFFECT_AXIS_X,
-            0,
-            *TRAIL_BLEND_ALPHA,
-            101,
-            *TRAIL_CULL_NONE,
-            1.4,
-            0.1,
-        );
         macros::EFFECT_FOLLOW(
             agent,
-            Hash40::new("master_swordflare"),
-            Hash40::new("sword1"),
+            Hash40::new("master_spear_aura"),
+            Hash40::new("haver"),
             0,
             0,
             0,
             0,
             0,
-            -90,
+            0,
             1,
             true,
         );
+        EffectModule::enable_sync_init_pos_last(agent.module_accessor);
     }
-    frame(agent.lua_state_agent, 10.0);
+    frame(agent.lua_state_agent, 6.0);
     if macros::is_excute(agent) {
-        macros::FOOT_EFFECT(
+        macros::EFFECT_FOLLOW(
             agent,
-            Hash40::new("sys_turn_smoke"),
+            Hash40::new("master_spear_flash"),
             Hash40::new("top"),
+            4,
+            20,
+            10,
             0,
             0,
             0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            1.1,
             true,
         );
-    }
-    frame(agent.lua_state_agent, 15.0);
-    if macros::is_excute(agent) {
-        macros::AFTER_IMAGE_OFF(agent, 5);
-    }
-    frame(agent.lua_state_agent, 20.0);
-    if macros::is_excute(agent) {
-        macros::EFFECT_OFF_KIND(agent, Hash40::new("master_swordflare"), false, true);
+        EffectModule::enable_sync_init_pos_last(agent.module_accessor);
     }
 }
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_attacks3_switchbe", effect_attacks3, Default)
+        .effect_acmd("effect_specialsstart_switchbe", effect_specialsstart, Low)
         .install();
 }

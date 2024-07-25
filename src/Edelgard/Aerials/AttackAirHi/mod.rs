@@ -19,19 +19,21 @@ unsafe extern "C" fn effect_attackairhi(agent: &mut L2CAgentBase) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 4) as u64;
         if rand == 1 {
             // changes to Timeskip version
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if TIMESKIP_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // sets Three Houses crown active
                 agent.module_accessor,
@@ -74,19 +76,21 @@ unsafe extern "C" fn effect_attackairhi(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = false;
         } else if rand == 2 {
             // changes to Emperor version
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if PROMOTION_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // sets Three Houses crown active
                 agent.module_accessor,
@@ -129,19 +133,21 @@ unsafe extern "C" fn effect_attackairhi(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = false;
         } else if rand == 3 {
             // changes to Three Hopes version
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if HOPES_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // sets Three Hopes crown active
                 agent.module_accessor,
@@ -184,19 +190,21 @@ unsafe extern "C" fn effect_attackairhi(agent: &mut L2CAgentBase) {
             DEFAULT_SWITCH = false;
         } else {
             // changes to default Byleth
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("elight_change_start"),
-                Hash40::new("top"),
-                0,
-                10,
-                0,
-                0,
-                0,
-                0,
-                1.3,
-                true,
-            );
+            if DEFAULT_SWITCH == false {
+                macros::EFFECT_FOLLOW(
+                    agent,
+                    Hash40::new("eflame_change_start"),
+                    Hash40::new("top"),
+                    0,
+                    10,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1.3,
+                    true,
+                );
+            }
             ModelModule::set_mesh_visibility(
                 // hides Three Houses crown
                 agent.module_accessor,
@@ -242,18 +250,41 @@ unsafe extern "C" fn effect_attackairhi(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 9.0);
     if get_value_float(agent.lua_state_agent, *SO_VAR_FLOAT_LR) < 0.0 {
         if macros::is_excute(agent) {
-            macros::EFFECT_FOLLOW(agent, Hash40::new("master_atk_air_hi_l"), Hash40::new("top"), 0, 30, 0.5, 0, 0, 0, 0.9, true);
+            macros::EFFECT_FOLLOW(
+                agent,
+                Hash40::new("master_atk_air_hi_l"),
+                Hash40::new("top"),
+                0,
+                30,
+                0.5,
+                0,
+                0,
+                0,
+                0.9,
+                true,
+            );
         }
-        else {
+    } else {
         if macros::is_excute(agent) {
-            macros::EFFECT_FOLLOW(agent, Hash40::new("master_atk_air_hi_r"), Hash40::new("top"), 0, 30, 0.5, 0, 0, 0, 0.9, true);
+            macros::EFFECT_FOLLOW(
+                agent,
+                Hash40::new("master_atk_air_hi_r"),
+                Hash40::new("top"),
+                0,
+                30,
+                0.5,
+                0,
+                0,
+                0,
+                0.9,
+                true,
+            );
         }
     }
-}
 }
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_attackairhi_switchsb", effect_attackairhi, Default)
+        .effect_acmd("effect_attackairhi_switchbe", effect_attackairhi, Default)
         .install();
 }
