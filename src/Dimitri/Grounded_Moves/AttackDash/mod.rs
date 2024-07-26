@@ -342,6 +342,6 @@ unsafe extern "C" fn effect_attackdash(agent: &mut L2CAgentBase) {
 }
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_attackdash_switchbl", effect_attackdash, Low)
+        .effect_acmd("effect_attackdash_switchgd", effect_attackdash, Low)
         .install();
 }
