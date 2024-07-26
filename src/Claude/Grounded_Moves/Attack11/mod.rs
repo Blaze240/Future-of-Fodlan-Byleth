@@ -13,8 +13,7 @@ use {
     smash_script::*,
     smashline::{Priority::*, *},
 };
-
-unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn effect_attack11(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         let rand = smash::app::sv_math::rand(hash40("agent"), 4) as u64;
         if rand == 1 {
@@ -22,7 +21,7 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
             if TIMESKIP_SWITCH == false {
                 macros::EFFECT_FOLLOW(
                     agent,
-                    Hash40::new("eflame_change_start"),
+                    Hash40::new("elight_change_start"),
                     Hash40::new("top"),
                     0,
                     10,
@@ -35,9 +34,9 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
                 );
             }
             ModelModule::set_mesh_visibility(
-                // sets Three Houses crown active
+                // sets Three Houses eyepatch active
                 agent.module_accessor,
-                Hash40::new("crown_houses"),
+                Hash40::new("eyepatch"),
                 true,
             );
             ModelModule::set_mesh_visibility(
@@ -53,9 +52,9 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
                 false,
             );
             ModelModule::set_mesh_visibility(
-                // hides Emperor armor
+                // hides Great Lord armor
                 agent.module_accessor,
-                Hash40::new("emperor_armor"),
+                Hash40::new("greatlord_armor"),
                 false,
             );
             ModelModule::set_mesh_visibility(
@@ -64,22 +63,16 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
                 Hash40::new("hopes_armor"),
                 false,
             );
-            ModelModule::set_mesh_visibility(
-                // hides Three Hopes crown
-                agent.module_accessor,
-                Hash40::new("crown_hopes"),
-                false,
-            );
             TIMESKIP_SWITCH = true;
             PROMOTION_SWITCH = false;
             HOPES_SWITCH = false;
             DEFAULT_SWITCH = false;
         } else if rand == 2 {
-            // changes to Emperor version
+            // changes to Great Lord version
             if PROMOTION_SWITCH == false {
                 macros::EFFECT_FOLLOW(
                     agent,
-                    Hash40::new("eflame_change_start"),
+                    Hash40::new("elight_change_start"),
                     Hash40::new("top"),
                     0,
                     10,
@@ -92,15 +85,15 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
                 );
             }
             ModelModule::set_mesh_visibility(
-                // sets Three Houses crown active
+                // sets Three Houses eyepatch active
                 agent.module_accessor,
-                Hash40::new("crown_houses"),
+                Hash40::new("eyepatch"),
                 true,
             );
             ModelModule::set_mesh_visibility(
-                // sets Emperor armor active
+                // sets Great Lord armor active
                 agent.module_accessor,
-                Hash40::new("emperor_armor"),
+                Hash40::new("greatlord_armor"),
                 true,
             );
             ModelModule::set_mesh_visibility(
@@ -121,12 +114,6 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
                 Hash40::new("hopes_armor"),
                 false,
             );
-            ModelModule::set_mesh_visibility(
-                // hides Three Hopes crown
-                agent.module_accessor,
-                Hash40::new("crown_hopes"),
-                false,
-            );
             TIMESKIP_SWITCH = false;
             PROMOTION_SWITCH = true;
             HOPES_SWITCH = false;
@@ -136,7 +123,7 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
             if HOPES_SWITCH == false {
                 macros::EFFECT_FOLLOW(
                     agent,
-                    Hash40::new("eflame_change_start"),
+                    Hash40::new("elight_change_start"),
                     Hash40::new("top"),
                     0,
                     10,
@@ -148,12 +135,6 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
                     true,
                 );
             }
-            ModelModule::set_mesh_visibility(
-                // sets Three Hopes crown active
-                agent.module_accessor,
-                Hash40::new("crown_hopes"),
-                true,
-            );
             ModelModule::set_mesh_visibility(
                 // sets Three Hopes armor active
                 agent.module_accessor,
@@ -173,15 +154,15 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
                 false,
             );
             ModelModule::set_mesh_visibility(
-                // hides Emperor armor
+                // hides Great Lord armor
                 agent.module_accessor,
-                Hash40::new("emperor_armor"),
+                Hash40::new("greatlord_armor"),
                 false,
             );
             ModelModule::set_mesh_visibility(
-                // hides Three Houses crown
+                // hides Three Houses eyepatch
                 agent.module_accessor,
-                Hash40::new("crown_houses"),
+                Hash40::new("eyepatch"),
                 false,
             );
             TIMESKIP_SWITCH = false;
@@ -193,7 +174,7 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
             if DEFAULT_SWITCH == false {
                 macros::EFFECT_FOLLOW(
                     agent,
-                    Hash40::new("eflame_change_start"),
+                    Hash40::new("elight_change_start"),
                     Hash40::new("top"),
                     0,
                     10,
@@ -206,15 +187,15 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
                 );
             }
             ModelModule::set_mesh_visibility(
-                // hides Three Houses crown
+                // hides Three Houses eyepatch
                 agent.module_accessor,
-                Hash40::new("crown_houses"),
+                Hash40::new("eyepatch"),
                 false,
             );
             ModelModule::set_mesh_visibility(
-                // hides Emperor armor
+                // hides Great Lord armor
                 agent.module_accessor,
-                Hash40::new("emperor_armor"),
+                Hash40::new("greatlord_armor"),
                 false,
             );
             ModelModule::set_mesh_visibility(
@@ -235,91 +216,47 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
                 Hash40::new("hopes_armor"),
                 false,
             );
-            ModelModule::set_mesh_visibility(
-                // hides Three Hopes crown
-                agent.module_accessor,
-                Hash40::new("crown_hopes"),
-                false,
-            );
             TIMESKIP_SWITCH = false;
             PROMOTION_SWITCH = false;
             HOPES_SWITCH = false;
             DEFAULT_SWITCH = true;
         }
     }
-    frame(agent.lua_state_agent, 10.0);
+    frame(agent.lua_state_agent, 4.0);
     if macros::is_excute(agent) {
-        macros::EFFECT_FOLLOW_NO_STOP(
+        macros::EFFECT_FOLLOW_ALPHA(
             agent,
-            Hash40::new("master_atk_air_lw_impact"),
+            Hash40::new("sys_attack_speedline"),
             Hash40::new("top"),
+            0.4,
+            12,
+            6,
+            11,
+            2,
             0,
-            6.5,
-            26,
-            0,
-            0,
-            0,
-            1.2,
+            0.4,
             true,
+            0.7,
         );
-        macros::LAST_EFFECT_SET_ALPHA(agent, 1.2);
-        macros::LAST_EFFECT_SET_RATE(agent, 0.7);
-    }
-    frame(agent.lua_state_agent, 11.0);
-    if macros::is_excute(agent) {
-        macros::EFFECT_FOLLOW(
+        macros::EFFECT_FOLLOW_ALPHA(
             agent,
-            Hash40::new("master_spearflare"),
-            Hash40::new("haver"),
+            Hash40::new("sys_attack_impact"),
+            Hash40::new("top"),
+            0.8,
+            10.5,
+            12.5,
             0,
             0,
             0,
-            0,
-            0,
-            0,
-            1,
+            0.7,
             true,
+            1,
         );
-    }
-    if get_value_float(agent.lua_state_agent, *SO_VAR_FLOAT_LR) < 0.0 {
-        if macros::is_excute(agent) {
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("master_atk_air_f"),
-                Hash40::new("top"),
-                -1,
-                9.5,
-                4,
-                -6.3,
-                -33,
-                190,
-                1.4,
-                true,
-            );
-            macros::LAST_EFFECT_SET_RATE(agent, 1.5);
-        } else {
-        }
-        if macros::is_excute(agent) {
-            macros::EFFECT_FOLLOW(
-                agent,
-                Hash40::new("master_atk_air_f"),
-                Hash40::new("top"),
-                -1,
-                10.5,
-                4,
-                -9.5,
-                -33,
-                195,
-                1.4,
-                true,
-            );
-            macros::LAST_EFFECT_SET_RATE(agent, 1.5);
-        }
     }
 }
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_attackairf_switchbe", effect_attackairf, Default)
+        .effect_acmd("effect_attack11_switchbl", effect_attack11, Default)
         .install();
 }

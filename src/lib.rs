@@ -17,8 +17,8 @@ static mut DEFAULT_SWITCH: bool = false;
 mod Edelgard;
 mod Dimitri;
 
-#[skyline::main(name = "future_of_fodlan_byleth_dimitri")]
+#[skyline::main(name = "future_of_fodlan_byleth")]
 pub fn main() {
-	//Edelgard::install();
+	Edelgard::install();
     Dimitri::install();
 }
