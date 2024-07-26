@@ -272,6 +272,6 @@ unsafe extern "C" fn effect_attackairf(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_attackairf_switchbl", effect_attackairf, Default)
+        .effect_acmd("effect_attackairf_switchgd", effect_attackairf, Default)
         .install();
 }
