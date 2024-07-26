@@ -305,6 +305,6 @@ unsafe extern "C" fn effect_attacks3(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_attacks3_switchbe", effect_attacks3, Default)
+        .effect_acmd("effect_attacks3_switchbl", effect_attacks3, Default)
         .install();
 }
