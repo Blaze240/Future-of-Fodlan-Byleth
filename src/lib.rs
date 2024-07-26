@@ -14,11 +14,10 @@ static mut PROMOTION_SWITCH: bool = false;
 static mut HOPES_SWITCH: bool = false;
 static mut DEFAULT_SWITCH: bool = false;
 
-mod Edelgard;
-mod Dimitri;
 
-#[skyline::main(name = "future_of_fodlan_byleth")]
+mod Edelgard;
+
+#[skyline::main(name = "future_of_fodlan_byleth_edelgard")]
 pub fn main() {
 	Edelgard::install();
-    Dimitri::install();
 }
