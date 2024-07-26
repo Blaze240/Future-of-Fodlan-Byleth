@@ -16,17 +16,22 @@ use {
 
 unsafe extern "C" fn game_win3(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
-        ArticleModule::generate_article(agent.module_accessor, *FIGHTER_MASTER_GENERATE_ARTICLE_SWORD, false, -1);
-        ArticleModule::change_motion(agent.module_accessor, *FIGHTER_MASTER_GENERATE_ARTICLE_SWORD, Hash40::new("win_3"), false, -1.0);
+        ArticleModule::generate_article(
+            agent.module_accessor,
+            *FIGHTER_MASTER_GENERATE_ARTICLE_SWORD,
+            false,
+            -1,
+        );
+        ArticleModule::change_motion(
+            agent.module_accessor,
+            *FIGHTER_MASTER_GENERATE_ARTICLE_SWORD,
+            Hash40::new("win_3"),
+            false,
+            -1.0,
+        );
         let rand = smash::app::sv_math::rand(hash40("agent"), 4) as u64;
         if rand == 1 {
             // changes to Timeskip version
-            ModelModule::set_mesh_visibility(
-                // sets Three Houses eyepatch active
-                agent.module_accessor,
-                Hash40::new("eyepatch"),
-                true,
-            );
             ModelModule::set_mesh_visibility(
                 // sets Timeskip armor active
                 agent.module_accessor,
@@ -40,9 +45,9 @@ unsafe extern "C" fn game_win3(agent: &mut L2CAgentBase) {
                 false,
             );
             ModelModule::set_mesh_visibility(
-                // hides Great Lord armor
+                // hides Barbarossa armor
                 agent.module_accessor,
-                Hash40::new("greatlord_armor"),
+                Hash40::new("barbarossa_armor"),
                 false,
             );
             ModelModule::set_mesh_visibility(
@@ -56,17 +61,11 @@ unsafe extern "C" fn game_win3(agent: &mut L2CAgentBase) {
             HOPES_SWITCH = false;
             DEFAULT_SWITCH = false;
         } else if rand == 2 {
-            // changes to Great Lord version
+            // changes to Barbarossa version
             ModelModule::set_mesh_visibility(
-                // sets Three Houses eyepatch active
+                // sets Barbarossa armor active
                 agent.module_accessor,
-                Hash40::new("eyepatch"),
-                true,
-            );
-            ModelModule::set_mesh_visibility(
-                // sets Great Lord armor active
-                agent.module_accessor,
-                Hash40::new("greatlord_armor"),
+                Hash40::new("barbarossa_armor"),
                 true,
             );
             ModelModule::set_mesh_visibility(
@@ -112,15 +111,9 @@ unsafe extern "C" fn game_win3(agent: &mut L2CAgentBase) {
                 false,
             );
             ModelModule::set_mesh_visibility(
-                // hides Great Lord armor
+                // hides Barbarossa armor
                 agent.module_accessor,
-                Hash40::new("greatlord_armor"),
-                false,
-            );
-            ModelModule::set_mesh_visibility(
-                // hides Three Houses eyepatch
-                agent.module_accessor,
-                Hash40::new("eyepatch"),
+                Hash40::new("barbarossa_armor"),
                 false,
             );
             TIMESKIP_SWITCH = false;
@@ -130,15 +123,9 @@ unsafe extern "C" fn game_win3(agent: &mut L2CAgentBase) {
         } else {
             // changes to default Byleth
             ModelModule::set_mesh_visibility(
-                // hides Three Houses eyepatch
+                // hides Barbarossa armor
                 agent.module_accessor,
-                Hash40::new("eyepatch"),
-                false,
-            );
-            ModelModule::set_mesh_visibility(
-                // hides Great Lord armor
-                agent.module_accessor,
-                Hash40::new("greatlord_armor"),
+                Hash40::new("barbarossa_armor"),
                 false,
             );
             ModelModule::set_mesh_visibility(
@@ -167,9 +154,8 @@ unsafe extern "C" fn game_win3(agent: &mut L2CAgentBase) {
     }
 }
 
-
 pub fn install() {
     Agent::new("master")
-        .game_acmd("game_win3_switchbl", game_win3, Low)
+        .game_acmd("game_win3_switchgd", game_win3, Low)
         .install();
 }

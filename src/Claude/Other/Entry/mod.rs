@@ -16,15 +16,9 @@ use {
 unsafe extern "C" fn expression_entry(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         ModelModule::set_mesh_visibility(
-            // hides Three Houses eyepatch
+            // hides Barbarossa armor
             agent.module_accessor,
-            Hash40::new("eyepatch"),
-            false,
-        );
-        ModelModule::set_mesh_visibility(
-            // hides Great Lord armor
-            agent.module_accessor,
-            Hash40::new("greatlord_armor"),
+            Hash40::new("barbarossa_armor"),
             false,
         );
         ModelModule::set_mesh_visibility(
@@ -66,7 +60,7 @@ unsafe extern "C" fn expression_entry(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("master")
-        .expression_acmd("expression_entryl_switchbl", expression_entry, Default)
-        .expression_acmd("expression_entryr_switchbl", expression_entry, Default)
+        .expression_acmd("expression_entryl_switchgd", expression_entry, Default)
+        .expression_acmd("expression_entryr_switchgd", expression_entry, Default)
         .install();
 }
