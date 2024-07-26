@@ -327,6 +327,6 @@ unsafe extern "C" fn effect_specialairlw(agent: &mut L2CAgentBase) {
 }
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_specialairlw_switchbe", effect_specialairlw, Low)
+        .effect_acmd("effect_specialairlw_switchbl", effect_specialairlw, Low)
         .install();
 }

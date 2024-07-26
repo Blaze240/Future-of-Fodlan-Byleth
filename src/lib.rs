@@ -17,7 +17,8 @@ static mut DEFAULT_SWITCH: bool = false;
 
 mod Dimitri;
 
+
 #[skyline::main(name = "future_of_fodlan_byleth_dimitri")]
 pub fn main() {
-	Dimitri::install();
+    Dimitri::install();
 }

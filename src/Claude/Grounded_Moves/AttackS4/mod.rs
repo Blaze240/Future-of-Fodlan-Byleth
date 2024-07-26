@@ -80,12 +80,6 @@ unsafe extern "C" fn effect_attacks4(agent: &mut L2CAgentBase) {
                 );
             }
             ModelModule::set_mesh_visibility(
-                // sets Three Houses eyepatch active
-                agent.module_accessor,
-                Hash40::new("eyepatch"),
-                true,
-            );
-            ModelModule::set_mesh_visibility(
                 // sets Timeskip armor active
                 agent.module_accessor,
                 Hash40::new("timeskip_armor"),
@@ -98,9 +92,9 @@ unsafe extern "C" fn effect_attacks4(agent: &mut L2CAgentBase) {
                 false,
             );
             ModelModule::set_mesh_visibility(
-                // hides Great Lord armor
+                // hides Barbarossa armor
                 agent.module_accessor,
-                Hash40::new("greatlord_armor"),
+                Hash40::new("barbarossa_armor"),
                 false,
             );
             ModelModule::set_mesh_visibility(
@@ -114,7 +108,7 @@ unsafe extern "C" fn effect_attacks4(agent: &mut L2CAgentBase) {
             HOPES_SWITCH = false;
             DEFAULT_SWITCH = false;
         } else if rand == 2 {
-            // changes to Great Lord version
+            // changes to Barbarossa version
             if PROMOTION_SWITCH == false {
                 macros::EFFECT_FOLLOW(
                     agent,
@@ -131,15 +125,9 @@ unsafe extern "C" fn effect_attacks4(agent: &mut L2CAgentBase) {
                 );
             }
             ModelModule::set_mesh_visibility(
-                // sets Three Houses eyepatch active
+                // sets Barbarossa armor active
                 agent.module_accessor,
-                Hash40::new("eyepatch"),
-                true,
-            );
-            ModelModule::set_mesh_visibility(
-                // sets Great Lord armor active
-                agent.module_accessor,
-                Hash40::new("greatlord_armor"),
+                Hash40::new("barbarossa_armor"),
                 true,
             );
             ModelModule::set_mesh_visibility(
@@ -200,15 +188,9 @@ unsafe extern "C" fn effect_attacks4(agent: &mut L2CAgentBase) {
                 false,
             );
             ModelModule::set_mesh_visibility(
-                // hides Great Lord armor
+                // hides Barbarossa armor
                 agent.module_accessor,
-                Hash40::new("greatlord_armor"),
-                false,
-            );
-            ModelModule::set_mesh_visibility(
-                // hides Three Houses eyepatch
-                agent.module_accessor,
-                Hash40::new("eyepatch"),
+                Hash40::new("barbarossa_armor"),
                 false,
             );
             TIMESKIP_SWITCH = false;
@@ -233,15 +215,9 @@ unsafe extern "C" fn effect_attacks4(agent: &mut L2CAgentBase) {
                 );
             }
             ModelModule::set_mesh_visibility(
-                // hides Three Houses eyepatch
+                // hides Barbarossa armor
                 agent.module_accessor,
-                Hash40::new("eyepatch"),
-                false,
-            );
-            ModelModule::set_mesh_visibility(
-                // hides Great Lord armor
-                agent.module_accessor,
-                Hash40::new("greatlord_armor"),
+                Hash40::new("barbarossa_armor"),
                 false,
             );
             ModelModule::set_mesh_visibility(
@@ -378,6 +354,6 @@ unsafe extern "C" fn effect_attacks4(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("master")
-        .effect_acmd("effect_attacks4_switchbl", effect_attacks4, Default)
+        .effect_acmd("effect_attacks4_switchgd", effect_attacks4, Default)
         .install();
 }
