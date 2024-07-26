@@ -17,7 +17,7 @@ static mut DEFAULT_SWITCH: bool = false;
 
 mod Claude;
 
-#[skyline::main(name = "future_of_fodlan_byleth")]
+#[skyline::main(name = "future_of_fodlan_byleth_claude")]
 pub fn main() {
     Claude::install();
 }
