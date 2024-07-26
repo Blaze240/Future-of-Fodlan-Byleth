@@ -15,9 +15,9 @@ static mut HOPES_SWITCH: bool = false;
 static mut DEFAULT_SWITCH: bool = false;
 
 
-mod Edelgard;
+mod Dimitri;
 
-#[skyline::main(name = "future_of_fodlan_byleth_edelgard")]
+#[skyline::main(name = "future_of_fodlan_byleth_dimitri")]
 pub fn main() {
-	Edelgard::install();
+	Dimitri::install();
 }
